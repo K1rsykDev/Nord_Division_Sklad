@@ -85,13 +85,13 @@ form.addEventListener("submit", async (event) => {
   };
 
   try {
+    const formPayload = new FormData();
+    formPayload.append("payload_json", JSON.stringify(payload));
+
     await fetch(webhookUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       mode: "no-cors",
-      body: JSON.stringify(payload),
+      body: formPayload,
     });
     statusEl.textContent = "Звіт відправлено у Discord.";
     form.reset();
