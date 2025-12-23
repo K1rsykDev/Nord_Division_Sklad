@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nord Division — Звіт складу</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Сім'я Nord Division</p>
+          <h1>Звіт складу</h1>
+          <p class="subtitle">
+            Оберіть предмети, вкажіть кількість та відправте звіт у Discord.
+          </p>
+        </div>
+        <div class="hero-badge">ND</div>
+      </header>
+
+      <form id="reportForm" class="report">
+        <section class="card section">
+          <h2>Дані хто заповняє.</h2>
+          <div class="grid two">
+            <label class="field">
+              <span>Нікнейм</span>
+              <input
+                type="text"
+                name="nickname"
+                placeholder="Ваш нік"
+                required
+              />
+            </label>
+            <label class="field">
+              <span>Static ID</span>
+              <input
+                type="text"
+                name="staticId"
+                placeholder="#12312"
+                pattern="#\d{5}"
+                required
+              />
+              <small>Формат: #12312</small>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Список предметів</h2>
+            <p>Вкажіть кількість, яку взяли зі складу.</p>
+          </div>
+          <div class="items-grid">
+            <article class="item-card" data-item data-materials="50">
+              <div class="item-icon ammo">
+                <span>9mm</span>
+              </div>
+              <div class="item-info">
+                <h3>Патрони 9mm (32 шт.)</h3>
+                <p>50 од.</p>
+              </div>
+              <div class="item-action">
+                <label>
+                  <span>К-сть</span>
+                  <input type="number" min="0" value="0" data-quantity />
+                </label>
+              </div>
+            </article>
+
+            <article class="item-card" data-item data-materials="75">
+              <div class="item-icon pistol">
+                <span>HP</span>
+              </div>
+              <div class="item-info">
+                <h3>Heavy Pistol</h3>
+                <p>75 од.</p>
+              </div>
+              <div class="item-action">
+                <label>
+                  <span>К-сть</span>
+                  <input type="number" min="0" value="0" data-quantity />
+                </label>
+              </div>
+            </article>
+
+            <article class="item-card" data-item data-materials="200">
+              <div class="item-icon machine">
+                <span>MP</span>
+              </div>
+              <div class="item-info">
+                <h3>Machine Pistol</h3>
+                <p>200 од.</p>
+              </div>
+              <div class="item-action">
+                <label>
+                  <span>К-сть</span>
+                  <input type="number" min="0" value="0" data-quantity />
+                </label>
+              </div>
+            </article>
+
+            <article class="item-card" data-item data-materials="150">
+              <div class="item-icon rifle">
+                <span>CR</span>
+              </div>
+              <div class="item-info">
+                <h3>Carbine Rifle</h3>
+                <p>150 од.</p>
+              </div>
+              <div class="item-action">
+                <label>
+                  <span>К-сть</span>
+                  <input type="number" min="0" value="0" data-quantity />
+                </label>
+              </div>
+            </article>
+
+            <article class="item-card" data-item data-materials="200">
+              <div class="item-icon revolver">
+                <span>HR</span>
+              </div>
+              <div class="item-info">
+                <h3>Heavy Revolver</h3>
+                <p>200 од.</p>
+              </div>
+              <div class="item-action">
+                <label>
+                  <span>К-сть</span>
+                  <input type="number" min="0" value="0" data-quantity />
+                </label>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="card summary">
+          <div>
+            <h2>Підсумок</h2>
+            <p>Загальна кількість матеріалів</p>
+          </div>
+          <div class="total" id="totalCount">0</div>
+        </section>
+
+        <section class="card section">
+          <h2>Відправка у Discord</h2>
+          <div class="actions">
+            <button type="submit">Надіслати звіт</button>
+            <span id="status" role="status"></span>
+          </div>
+        </section>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
