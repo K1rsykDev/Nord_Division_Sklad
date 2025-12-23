@@ -1,6 +1,8 @@
 const form = document.getElementById("reportForm");
 const totalCount = document.getElementById("totalCount");
 const statusEl = document.getElementById("status");
+const webhookUrl =
+  "https://discord.com/api/webhooks/1439799327680889016/e_rq0csWqzA-zKSKB4O6BGO85Qy5WAVefKvjqK6c1l3Hi8zcLQi76ohNIIPTxZAoe6WN";
 
 const items = Array.from(document.querySelectorAll("[data-item]"));
 
@@ -28,8 +30,6 @@ form.addEventListener("submit", async (event) => {
   const formData = new FormData(form);
   const nickname = formData.get("nickname");
   const staticId = formData.get("staticId");
-  const webhook = formData.get("webhook");
-
   const itemData = getItemsData().filter((item) => item.quantity > 0);
   const total = itemData.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -78,7 +78,7 @@ form.addEventListener("submit", async (event) => {
   };
 
   try {
-    await fetch(webhook, {
+    await fetch(webhookUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
