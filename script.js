@@ -10,11 +10,15 @@ const getItemsData = () =>
   items.map((card) => {
     const title = card.querySelector("h3").textContent.trim();
     const quantity = Number(card.querySelector("[data-quantity]").value || 0);
-    return { title, quantity };
+    const materials = Number(card.dataset.materials || 0);
+    return { title, quantity, materials };
   });
 
 const updateTotal = () => {
-  const total = getItemsData().reduce((sum, item) => sum + item.quantity, 0);
+  const total = getItemsData().reduce(
+    (sum, item) => sum + item.quantity * item.materials,
+    0
+  );
   totalCount.textContent = total.toString();
 };
 
@@ -31,7 +35,10 @@ form.addEventListener("submit", async (event) => {
   const nickname = formData.get("nickname");
   const staticId = formData.get("staticId");
   const itemData = getItemsData().filter((item) => item.quantity > 0);
-  const total = itemData.reduce((sum, item) => sum + item.quantity, 0);
+  const total = itemData.reduce(
+    (sum, item) => sum + item.quantity * item.materials,
+    0
+  );
 
   if (itemData.length === 0) {
     statusEl.textContent = "Оберіть хоча б один предмет.";
