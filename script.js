@@ -6,6 +6,18 @@ const webhookUrl =
 
 const items = Array.from(document.querySelectorAll("[data-item]"));
 
+async function sendReport(payload) {
+  const response = await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ embeds: [payload.embed] }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Не вдалося надіслати звіт у Discord");
+  }
+}
+
 const getItemsData = () =>
   items.map((card) => {
     const title = card.querySelector("h3").textContent.trim();
@@ -85,14 +97,7 @@ form.addEventListener("submit", async (event) => {
   };
 
   try {
-    const formPayload = new FormData();
-    formPayload.append("payload_json", JSON.stringify(payload));
-
-    await fetch(webhookUrl, {
-      method: "POST",
-      mode: "no-cors",
-      body: formPayload,
-    });
+    await sendReport({ embed: payload.embeds[0] });
     statusEl.textContent = "Звіт відправлено у Discord.";
     form.reset();
     updateTotal();
