@@ -2,7 +2,7 @@ const form = document.getElementById("reportForm");
 const totalCount = document.getElementById("totalCount");
 const statusEl = document.getElementById("status");
 const webhookUrl =
-  "https://discord.com/api/webhooks/1439799327680889016/e_rq0csWqzA-zKSKB4O6BGO85Qy5WAVefKvjqK6c1l3Hi8zcLQi76ohNIIPTxZAoe6WN";
+  "https://discord.com/api/webhooks/1453159750253674679/kLmtrcFmzIJYAeMO3Tnp6zbd42ODEBAuQmV3zWV20-qzBxkyd9dBv_oISpaKWBkzMWmw";
 
 const items = Array.from(document.querySelectorAll("[data-item]"));
 
