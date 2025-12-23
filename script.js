@@ -59,7 +59,7 @@ form.addEventListener("submit", async (event) => {
 
   const fields = itemData.map((item) => ({
     name: item.title,
-    value: `${item.quantity} од.`,
+    value: `${item.quantity} шт.`,
     inline: true,
   }));
 
@@ -70,7 +70,7 @@ form.addEventListener("submit", async (event) => {
   });
 
   const payload = {
-    username: "Nord Division Sklad",
+    username: "Nord Division Склад",
     embeds: [
       {
         title: "Звіт складу",
